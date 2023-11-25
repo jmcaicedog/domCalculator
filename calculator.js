@@ -19,5 +19,25 @@ function buttonClick(i) {
   } else {
     operator = i;
     operatorPressed = true;
+    switch (i) {
+      case "+":
+        console.log("addition");
+        break;
+      case "-":
+        console.log("substraction");
+        break;
+      case "x":
+        console.log("multiplication");
+        break;
+      case "/":
+        console.log("division");
+        break;
+      case "=":
+        console.log("equals");
+        break;
+      case "AC":
+        console.log("ac");
+        break;
+    }
   }
 }
