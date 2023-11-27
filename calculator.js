@@ -3,6 +3,8 @@ const buttons = document.getElementsByClassName("calculator__key");
 let a = [];
 let b = [];
 let operator = "+";
+let result = "0";
+let last = "0";
 const operators = ["+", "-", "x", "/", "=", "AC"];
 let operatorPressed = false;
 for (let i = 0; i < buttons.length; i++) {
@@ -34,7 +36,12 @@ function buttonClick(i) {
         console.log("/");
         break;
       case "=":
-        console.log("equals");
+        result = parseFloat(a.join("")) + parseFloat(b.join(""), 2);
+        last = result.toString().split("");
+        a = [];
+        b = [];
+        output.innerText = result;
+        operatorPressed = false;
         break;
       case "AC":
         a = [];
