@@ -18,9 +18,8 @@ function buttonClick(i) {
   } else if (!operators.includes(i) && operatorPressed == true) {
     b.push(i);
     output.innerText = b.join("");
-  } else {
+  } else if (a.length > 0) {
     operator = i;
-    console.log(operator);
     operatorPressed = true;
     switch (i) {
       case "+":
@@ -46,6 +45,7 @@ function buttonClick(i) {
       case "AC":
         a = [];
         b = [];
+        console.log("AC");
         output.innerText = "0";
         break;
     }
