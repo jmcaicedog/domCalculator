@@ -1,7 +1,7 @@
 const output = document.getElementById("output");
 const buttons = document.getElementsByClassName("calculator__key");
-const a = [];
-const b = [];
+let a = [];
+let b = [];
 let operator = "+";
 const operators = ["+", "-", "x", "/", "=", "AC"];
 let operatorPressed = false;
@@ -18,25 +18,28 @@ function buttonClick(i) {
     output.innerText = b.join("");
   } else {
     operator = i;
+    console.log(operator);
     operatorPressed = true;
     switch (i) {
       case "+":
-        console.log("addition");
+        console.log("+");
         break;
       case "-":
-        console.log("substraction");
+        console.log("-");
         break;
       case "x":
-        console.log("multiplication");
+        console.log("x");
         break;
       case "/":
-        console.log("division");
+        console.log("/");
         break;
       case "=":
         console.log("equals");
         break;
       case "AC":
-        console.log("ac");
+        a = [];
+        b = [];
+        output.innerText = "0";
         break;
     }
   }
