@@ -10,7 +10,12 @@ let operatorPressed = false;
 keyboard.addEventListener("click", (e) => buttonClick(e.target.innerHTML));
 
 function buttonClick(i) {
-  if (!operators.includes(i) && operatorPressed == false) {
+  if (i == "AC") {
+    a = [];
+    b = [];
+    operatorPressed = false;
+    output.innerHTML = 0;
+  } else if (!operators.includes(i) && operatorPressed == false) {
     a.push(i);
     output.innerText = a.join("");
   } else if (!operators.includes(i) && operatorPressed == true) {
@@ -43,13 +48,6 @@ const calculate = (a2, b2, i2) => {
       a = [];
       b = [];
       output.innerText = result;
-      operatorPressed = false;
-      break;
-    case "AC":
-      a = [];
-      b = [];
-      console.log("AC");
-      output.innerText = "0";
       operatorPressed = false;
       break;
   }
