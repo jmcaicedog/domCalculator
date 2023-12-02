@@ -10,41 +10,46 @@ let operatorPressed = false;
 keyboard.addEventListener("click", (e) => buttonClick(e.target.innerHTML));
 
 function buttonClick(i) {
+  if (operators.includes(i) && a.length > 0) {
+    operatorPressed = true;
+  }
   if (i == "AC") {
     a = [];
     b = [];
     operatorPressed = false;
     output.innerHTML = 0;
-  } else if (!operators.includes(i) && operatorPressed == false) {
+  }
+  if (!operators.includes(i) && operatorPressed == false) {
     a.push(i);
     output.innerText = a.join("");
   } else if (!operators.includes(i) && operatorPressed == true) {
     b.push(i);
     output.innerText = b.join("");
-  } else if (a.length > 0) {
+  } else if (a.length > 0 && b.length == 0 && i != "=") {
     operator = i;
     operatorPressed = true;
-    calculate(a, b, i);
+  } else if (a.length > 0 && b.length > 0 && i == "=") {
+    calculate(a, b, operator);
   }
 }
 
 const calculate = (a2, b2, i2) => {
   switch (i2) {
     case "+":
-      console.log("+");
+      result = parseFloat(a2.join("")) + parseFloat(b2.join(""), 2);
+      reset();
       break;
     case "-":
-      console.log("-");
+      result = parseFloat(a2.join("")) - parseFloat(b2.join(""), 2);
+      console.log("restando");
+      reset();
       break;
     case "x":
-      console.log("x");
+      result = parseFloat(a2.join("")) * parseFloat(b2.join(""), 2);
+      reset();
       break;
     case "/":
-      console.log("/");
-      break;
-    case "=":
-      result = parseFloat(a2.join("")) + parseFloat(b2.join(""), 2);
-      last = result.toString().split("");
+      result = parseFloat(a2.join("")) / parseFloat(b2.join(""), 2);
       reset();
       break;
   }
@@ -54,5 +59,6 @@ function reset() {
   a = [];
   b = [];
   output.innerText = result;
+  result = 0;
   operatorPressed = false;
 }
