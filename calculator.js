@@ -45,10 +45,14 @@ const calculate = (a2, b2, i2) => {
     case "=":
       result = parseFloat(a2.join("")) + parseFloat(b2.join(""), 2);
       last = result.toString().split("");
-      a = [];
-      b = [];
-      output.innerText = result;
-      operatorPressed = false;
+      reset();
       break;
   }
 };
+
+function reset() {
+  a = [];
+  b = [];
+  output.innerText = result;
+  operatorPressed = false;
+}
