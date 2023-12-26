@@ -7,7 +7,10 @@ let result = "0";
 let last = "0";
 const operators = ["+", "-", "x", "/", "=", "AC"];
 let operatorPressed = false;
-keyboard.addEventListener("click", (e) => buttonClick(e.target.innerHTML));
+keyboard.addEventListener("click", (e) => {
+  console.log(e.target.id);
+  if (e.target.id != "keyboard") buttonClick(e.target.innerHTML);
+});
 
 function buttonClick(i) {
   if (operators.includes(i) && a.length > 0) {
