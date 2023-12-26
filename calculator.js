@@ -46,30 +46,22 @@ function buttonClick(i) {
 const calculate = (a2, b2, i2) => {
   switch (i2) {
     case "+":
-      result = parseFloat(
-        parseFloat(a2.join("")) + parseFloat(b2.join(""))
-      ).toFixed(2);
+      result = parseFloat(a2.join("")) + parseFloat(b2.join(""));
       last = result;
       reset();
       break;
     case "-":
-      result = parseFloat(
-        parseFloat(parseFloat(a2.join("")) - parseFloat(b2.join(""))).toFixed(2)
-      ).toFixed(2);
+      result = parseFloat(a2.join("")) - parseFloat(b2.join(""));
       last = result;
       reset();
       break;
     case "x":
-      result = parseFloat(
-        parseFloat(a2.join("")) * parseFloat(b2.join(""))
-      ).toFixed(2);
+      result = parseFloat(a2.join("")) * parseFloat(b2.join(""));
       last = result;
       reset();
       break;
     case "/":
-      result = parseFloat(
-        parseFloat(a2.join("")) / parseFloat(b2.join(""))
-      ).toFixed(2);
+      result = parseFloat(a2.join("")) / parseFloat(b2.join(""));
       last = result;
       reset();
       break;
@@ -79,7 +71,10 @@ const calculate = (a2, b2, i2) => {
 function reset() {
   a = [];
   b = [];
-  output.innerText = result;
+  Number.isInteger(result)
+    ? (output.innerText = result)
+    : (output.innerText = parseFloat(result).toFixed(2));
+
   result = 0;
   operatorPressed = false;
 }
