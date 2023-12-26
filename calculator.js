@@ -1,5 +1,7 @@
 const output = document.getElementById("output");
 const keyboard = document.getElementById("keyboard");
+const toggle = document.getElementById("toggle");
+const keys = document.getElementsByClassName("calculator__key");
 let a = [];
 let b = [];
 let operator = "+";
@@ -8,9 +10,18 @@ let last = "";
 const operators = ["+", "-", "x", "/", "=", "AC"];
 let operatorPressed = false;
 let lastPressent = false;
+let theme = false;
 keyboard.addEventListener("click", (e) => {
   if (e.target.id != "keyboard") buttonClick(e.target.innerHTML);
 });
+toggle.addEventListener("click", toggleTheme);
+function toggleTheme() {
+  output.classList.toggle("calculator__output__dark");
+  keyboard.classList.toggle("calculator__keys__dark");
+  for (let i of keys) {
+    i.classList.toggle("calculator__key__dark");
+  }
+}
 
 function buttonClick(i) {
   if (operators.includes(i) && a.length == 0) {
