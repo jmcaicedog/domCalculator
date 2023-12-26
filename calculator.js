@@ -39,9 +39,6 @@ function buttonClick(i) {
     operator = i;
     operatorPressed = true;
   } else if (a.length > 0 && b.length > 0 && i == "=") {
-    console.log(a);
-    console.log(b);
-    console.log(operator);
     calculate(a, b, operator);
   }
 }
@@ -49,22 +46,30 @@ function buttonClick(i) {
 const calculate = (a2, b2, i2) => {
   switch (i2) {
     case "+":
-      result = parseFloat(a2.join("")) + parseFloat(b2.join(""), 2);
+      result = parseFloat(
+        parseFloat(a2.join("")) + parseFloat(b2.join(""))
+      ).toFixed(2);
       last = result;
       reset();
       break;
     case "-":
-      result = parseFloat(a2.join("")) - parseFloat(b2.join(""), 2);
+      result = parseFloat(
+        parseFloat(parseFloat(a2.join("")) - parseFloat(b2.join(""))).toFixed(2)
+      ).toFixed(2);
       last = result;
       reset();
       break;
     case "x":
-      result = parseFloat(a2.join("")) * parseFloat(b2.join(""), 2);
+      result = parseFloat(
+        parseFloat(a2.join("")) * parseFloat(b2.join(""))
+      ).toFixed(2);
       last = result;
       reset();
       break;
     case "/":
-      result = parseFloat(a2.join("")) / parseFloat(b2.join(""), 2);
+      result = parseFloat(
+        parseFloat(a2.join("")) / parseFloat(b2.join(""))
+      ).toFixed(2);
       last = result;
       reset();
       break;
